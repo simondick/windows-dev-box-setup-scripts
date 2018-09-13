@@ -36,14 +36,17 @@ executeScript "CommonDevTools.ps1";
 # visualstudio2017professional
 # visualstudio2017enterprise
 
-choco install visualstudio2017community -y --package-parameters "--add Microsoft.VisualStudio.Component.Git" 
+choco install visualstudio2017professional -y --package-parameters "--add Microsoft.VisualStudio.Component.Git" 
 Update-SessionEnvironment #refreshing env due to Git install
 
 #--- UWP Workload and installing Windows Template Studio ---
-choco install -y visualstudio2017-workload-azure
-choco install -y visualstudio2017-workload-universal
-executeScript "WindowsTemplateStudio.ps1";
-executeScript "GetUwpSamplesOffGithub.ps1";
+choco install -y visualstudio2017-workload-azure 
+choco install -y visualstudio2017-workload-netweb 
+choco install -y visualstudio2017-workload-netcoretools 
+choco install -y visualstudio2017-workload-manageddesktop
+choco install -y visualstudio2017-workload-node
+#executeScript "WindowsTemplateStudio.ps1";
+#executeScript "GetUwpSamplesOffGithub.ps1";
 
 #--- reenabling critial items ---
 Enable-UAC
