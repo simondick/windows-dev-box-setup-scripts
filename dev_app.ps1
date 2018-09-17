@@ -21,11 +21,15 @@ function executeScript {
 	iex ((new-object net.webclient).DownloadString("$helperUri/$script"))
 }
 
+choco feature enable -n allowGlobalConfirmation  
+choco feature enable -n allowEmptyChecksums
+
 #--- Setting up Windows ---
 executeScript "SystemConfiguration.ps1";
 executeScript "FileExplorerSettings.ps1";
 executeScript "RemoveDefaultApps.ps1";
 executeScript "CommonDevTools.ps1";
+executeScript "Virtualizationtools.ps1"
 
 #--- Tools ---
 #--- Installing VS and VS Code with Git 

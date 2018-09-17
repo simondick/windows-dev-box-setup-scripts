@@ -4,7 +4,7 @@
 # alternative to above: Enable-WindowsOptionalFeature -Online -NoRestart -FeatureName Microsoft-Windows-Subsystem-Linux
 Enable-WindowsOptionalFeature -Online -NoRestart -FeatureName Microsoft-Windows-Subsystem-Linux
 # alternative to above: Enable-WindowsOptionalFeature -Online -NoRestart -FeatureName Microsoft-Hyper-V 
-Enable-WindowsOptionalFeature -Online -NoRestart -FeatureName Microsoft-Hyper-V 
+Enable-WindowsOptionalFeature -Online -NoRestart -FeatureName Microsoft-Hyper-V-All 
 # choco install -y docker-for-windows
 # choco install -y vscode-docker
 
