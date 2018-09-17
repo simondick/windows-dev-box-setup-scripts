@@ -9,3 +9,8 @@ choco install -y googlechrome
 choco install -y notepadplusplus.install
 choco install -y sourcetree 
 choco install -y slack
+
+choco install -y teamviewer
+choco install -y resharper-platform
+
+choco install sql-server-management-studio
