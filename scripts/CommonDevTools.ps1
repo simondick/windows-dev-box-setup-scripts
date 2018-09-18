@@ -13,4 +13,4 @@ choco install -y slack
 choco install -y teamviewer
 choco install -y resharper-platform
 
-choco install -y sql-server-management-studio
+#choco install -y sql-server-management-studio
