@@ -21,6 +21,14 @@ function executeScript {
 	iex ((new-object net.webclient).DownloadString("$helperUri/$script"))
 }
 
+if($env:USERDNSDOMAIN.ToLower() -ne "kfs.local")
+{
+    $wsname = Read-host -Prompt "Enter computer name"
+    $creds = Get-Credential
+    Rename-Computer $wsname
+    add-computer -DomainName "kfs.local" -NewName $wsname -Credential $creds -Restart -Force
+}
+
 choco feature enable -n allowGlobalConfirmation  
 choco feature enable -n allowEmptyChecksums
 
