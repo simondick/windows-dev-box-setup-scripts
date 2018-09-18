@@ -21,13 +21,7 @@ function executeScript {
 	iex ((new-object net.webclient).DownloadString("$helperUri/$script"))
 }
 
-if($env:USERDNSDOMAIN.ToLower() -ne "kfs.local")
-{
-    $wsname = Read-host -Prompt "Enter computer name"
-    $creds = Get-Credential
-    Rename-Computer $wsname
-    add-computer -DomainName "kfs.local" -NewName $wsname -Credential $creds -Restart -Force
-}
+
 
 choco feature enable -n allowGlobalConfirmation  
 choco feature enable -n allowEmptyChecksums
@@ -60,6 +54,14 @@ choco install -y visualstudio2017-workload-node
 #executeScript "WindowsTemplateStudio.ps1";
 #executeScript "GetUwpSamplesOffGithub.ps1";
 
+#Joining to domain and renaming computer
+if($env:USERDNSDOMAIN.ToLower() -ne "kfs.local")
+{
+    $wsname = Read-host -Prompt "Enter computer name"
+    $creds = Get-Credential
+    Rename-Computer $wsname
+    add-computer -DomainName "kfs.local" -NewName $wsname -Credential $creds -Restart -Force
+}
 #--- reenabling critial items ---
 Enable-UAC
 Enable-MicrosoftUpdate
