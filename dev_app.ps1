@@ -4,6 +4,9 @@
 
 Disable-UAC
 
+New-Item -Path "$env:userprofile\AppData\Local\ChocoCache" -ItemType directory -Force | Out-Null
+$common = "--cacheLocation=`"$env:userprofile\AppData\Local\ChocoCache`""
+
 # Get the base URI path from the ScriptToCall value
 $bstrappackage = "-bootstrapPackage"
 $helperUri = $Boxstarter['ScriptToCall']
@@ -42,15 +45,15 @@ executeScript "VirtualizationTools.ps1";
 # visualstudio2017professional
 # visualstudio2017enterprise
 
-choco install visualstudio2017professional -y --package-parameters "--add Microsoft.VisualStudio.Component.Git" --cacheLocation "$env:userprofile\AppData\Local\Temp\chocolatey"
+choco install visualstudio2017professional -y --package-parameters "--add Microsoft.VisualStudio.Component.Git" $common
 Update-SessionEnvironment #refreshing env due to Git install
 
 #--- UWP Workload and installing Windows Template Studio ---
-choco install -y visualstudio2017-workload-azure  --cacheLocation "$env:userprofile\AppData\Local\Temp\chocolatey"
-choco install -y visualstudio2017-workload-netweb  --cacheLocation "$env:userprofile\AppData\Local\Temp\chocolatey"
-choco install -y visualstudio2017-workload-netcoretools  --cacheLocation "$env:userprofile\AppData\Local\Temp\chocolatey"
-choco install -y visualstudio2017-workload-manageddesktop --cacheLocation "$env:userprofile\AppData\Local\Temp\chocolatey"
-choco install -y visualstudio2017-workload-node --cacheLocation "$env:userprofile\AppData\Local\Temp\chocolatey"
+choco install -y visualstudio2017-workload-azure $common
+choco install -y visualstudio2017-workload-netweb $common
+choco install -y visualstudio2017-workload-netcoretools $common
+choco install -y visualstudio2017-workload-manageddesktop $common
+choco install -y visualstudio2017-workload-node $common
 #executeScript "WindowsTemplateStudio.ps1";
 #executeScript "GetUwpSamplesOffGithub.ps1";
 
