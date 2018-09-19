@@ -42,15 +42,15 @@ executeScript "VirtualizationTools.ps1";
 # visualstudio2017professional
 # visualstudio2017enterprise
 
-choco install visualstudio2017professional -y --package-parameters "--add Microsoft.VisualStudio.Component.Git" 
+choco install visualstudio2017professional -y --package-parameters "--add Microsoft.VisualStudio.Component.Git" --cacheLocation "$env:userprofile\AppData\Local\Temp\chocolatey"
 Update-SessionEnvironment #refreshing env due to Git install
 
 #--- UWP Workload and installing Windows Template Studio ---
-choco install -y visualstudio2017-workload-azure 
-choco install -y visualstudio2017-workload-netweb 
-choco install -y visualstudio2017-workload-netcoretools 
-choco install -y visualstudio2017-workload-manageddesktop
-choco install -y visualstudio2017-workload-node
+choco install -y visualstudio2017-workload-azure  --cacheLocation "$env:userprofile\AppData\Local\Temp\chocolatey"
+choco install -y visualstudio2017-workload-netweb  --cacheLocation "$env:userprofile\AppData\Local\Temp\chocolatey"
+choco install -y visualstudio2017-workload-netcoretools  --cacheLocation "$env:userprofile\AppData\Local\Temp\chocolatey"
+choco install -y visualstudio2017-workload-manageddesktop --cacheLocation "$env:userprofile\AppData\Local\Temp\chocolatey"
+choco install -y visualstudio2017-workload-node --cacheLocation "$env:userprofile\AppData\Local\Temp\chocolatey"
 #executeScript "WindowsTemplateStudio.ps1";
 #executeScript "GetUwpSamplesOffGithub.ps1";
 
